@@ -6,7 +6,7 @@ const restCockpit = (props) => {
     if(!props.error.errorPosts){
       postsKeeper = <RestResults data = {props.data.posts} />
     }
-    console.log('[testRest.js]');
+    console.log('[restCockpit.js]');
     return (
 
         <table className="table table-hover">
