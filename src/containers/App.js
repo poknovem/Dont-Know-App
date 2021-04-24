@@ -3,6 +3,7 @@ import './App.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import RestCockpit from '../components/Rest/RestCockpit';
+import RestHeader from '../components/Rest/RestHeader';
 
 
 const App = (props) =>{
@@ -54,8 +55,10 @@ const App = (props) =>{
     // }
 
     return (
-        <div className="App">
-            <RestCockpit clicked={requestorHandler} data={postsState} error={errorPostsState}></RestCockpit>
+        <div className="App">            
+            <RestHeader clicked={requestorHandler}/>
+
+            <RestCockpit data={postsState} error={errorPostsState}></RestCockpit>
             {/* {postsKeeper} */}
         </div>
     );

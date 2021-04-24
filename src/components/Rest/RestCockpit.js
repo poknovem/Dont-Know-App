@@ -8,13 +8,6 @@ const restCockpit = (props) => {
     }
     console.log('[testRest.js]');
     return (
-      
-      <div className="App">
-        <h1>REST API section</h1>
-        <br/>
-        <button 
-           onClick={props.clicked}>Request!!!</button>
-        <br/><br/>
 
         <table className="table table-hover">
             <thead className="thead-dark">
@@ -29,9 +22,6 @@ const restCockpit = (props) => {
               {postsKeeper}
             </tbody>
         </table>
-        
-      </div>
-      
     );
 
 }
