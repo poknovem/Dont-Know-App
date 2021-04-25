@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
@@ -20,10 +20,9 @@ const Covid = props =>{
         isShowRest : true
     });
 
-    const requestorCovidHandler = () =>{
-        
-        if(isShowCovid.isShowRest){
-            axios.get("https://covid19.th-stat.com/api/open/timeline").then(response => {
+    useEffect(() => {
+        console.log('[Covid.js] 1nd useEffect');
+        axios.get("https://covid19.th-stat.com/api/open/timeline").then(response => {
             console.log(response);
     
                 setCovidState({
@@ -33,25 +32,11 @@ const Covid = props =>{
                 error => setErrorCovidState({
                 errorPosts : true
             }));
-
-            setIsShowCovid({
-                isShowRest : false
-            });
-        }else{
-            setIsShowCovid({
-                isShowRest : true
-            });
-
-            setCovidState({
-                posts : []
-            })
-        }
-            
-    }
+    },[]);
 
     return (
         <BasicAuxWrapper>            
-            <CovidHeader clicked={requestorCovidHandler}/>
+            <CovidHeader/>
             <CovidCockpit data={covidState} error={errorCovidState}></CovidCockpit>
         </BasicAuxWrapper>
     );

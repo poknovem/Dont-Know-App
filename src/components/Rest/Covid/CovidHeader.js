@@ -5,11 +5,7 @@ const covidHeader = ( props ) => {
     console.log('[covidHeader.js]');
     return (
         <BasicAuxWrapper>
-            <h1>REST API section</h1>
-            <br/>
-            <button 
-                onClick={props.clicked}>Request!!!</button>
-            <br/><br/>
+            <h1>Thailand Covid Report</h1>
         </BasicAuxWrapper>
     )
 };
