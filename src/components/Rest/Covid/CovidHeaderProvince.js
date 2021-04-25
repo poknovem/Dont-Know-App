@@ -6,7 +6,7 @@ const covidHeaderProvince = ( props ) => {
     return (
         <BasicAuxWrapper>
             <th>จังหวัด</th>
-            <th>จำนวน</th>
+            <th>ติดโควิดทั้งหมด</th>
         </BasicAuxWrapper>
     )
 };

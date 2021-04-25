@@ -5,8 +5,8 @@ const covidHeaderNations = ( props ) => {
     console.log('[covidHeaderNations.js]');
     return (
         <BasicAuxWrapper>
-            <th>เชื้อชาติ</th>
-            <th>จำนวน</th>
+            <th>เชื้อชาติที่อาศัยในประเทศไทย</th>
+            <th>ติดโควิดทั้งหมด</th>
         </BasicAuxWrapper>
     )
 };

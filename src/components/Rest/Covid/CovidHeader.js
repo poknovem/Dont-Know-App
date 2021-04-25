@@ -6,6 +6,8 @@ const covidHeader = ( props ) => {
     return (
         <BasicAuxWrapper>
             <h1>Thailand Covid Report</h1>
+            <cite title="ข้อมูลจากกรมควบคุมโรค">ข้อมูลจากกรมควบคุมโรค</cite>
+            <br/>
         </BasicAuxWrapper>
     )
 };
