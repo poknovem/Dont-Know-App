@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import CovidCockpit from '../../components/Rest/Covid/CovidCockpit';

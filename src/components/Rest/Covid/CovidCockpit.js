@@ -1,5 +1,6 @@
 import React from 'react';
 import CovidResults from './CovidResults.js';
+import './Covid.css';
 
 const covidCockpit = (props) => {
     let postsKeeper = null;
@@ -9,7 +10,7 @@ const covidCockpit = (props) => {
     console.log('[covidCockpit.js]');
     return (
 
-        <table className="table table-hover">
+        <table className="table table-hover fixTableHead">
             <thead className="thead-dark">
                 <tr>
                     <th>วันที่</th>
