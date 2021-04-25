@@ -23,7 +23,7 @@ const RestTest = props =>{
         
         if(isShowRest.isShowRest){
             axios.get("https://jsonplaceholder.typicode.com/posts").then(response => {
-            console.log(response);
+            //console.log(response);
     
                 setPostsState({
                     posts : response.data

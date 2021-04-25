@@ -1,27 +1,39 @@
 import React from 'react';
 import CovidResults from './CovidResults.js';
 import './Covid.css';
+import CovidHeaderTimeline from './CovidHeaderTimeline.js';
+import CovidHeaderProvince from './CovidHeaderProvince.js';
+import CovidResultsProvinces from './CovidResultsProvinces.js';
+import CovidHeaderNations from './CovidHeaderNations.js';
 
 const covidCockpit = (props) => {
     let postsKeeper = null;
-    if(!props.error.errorPosts){
-      postsKeeper = <CovidResults data = {props.data.posts} />
+    if(props.selected === "1"){
+      postsKeeper = <CovidResults data = {props.data.posts} selected={props.selected}/>
+    }else if(props.selected === "2"){
+        postsKeeper = <CovidResultsProvinces data = {props.data.posts} selected={props.selected}/>
+    }else if(props.selected === "3"){
+        postsKeeper = <CovidResultsProvinces data = {props.data.posts} selected={props.selected}/>
     }
+
     console.log('[covidCockpit.js]');
     return (
 
         <table className="table table-hover fixTableHead">
             <thead className="thead-dark">
                 <tr>
-                    <th>วันที่</th>
-                    <th>ผู้ป่วยใหม่</th>
-                    <th>รักษาหายใหม่</th>
-                    <th>เข้ารับการรักษาในโรงพยาบาลใหม่</th>
-                    <th>เสียชีวิต</th>
-                    <th>ติดโควิดทั้งหมด</th>
-                    <th>รักษาหายทั้งหมด</th>
-                    <th>เข้ารับการรักษาในโรงพยาบาลทั้งหมด</th>
-                    <th>เสียชีวิตสะสม</th>
+                    {props.selected === "1" &&
+                        <CovidHeaderTimeline/>
+                    }  
+
+                    {props.selected === "2" &&
+                        <CovidHeaderProvince/>
+                    }  
+
+                    {props.selected === "3" &&
+                        <CovidHeaderNations/>
+                    }  
+                    
                 </tr>
             </thead>
             <tbody>

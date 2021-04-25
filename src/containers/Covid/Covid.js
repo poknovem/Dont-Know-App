@@ -4,6 +4,8 @@ import axios from 'axios';
 import CovidCockpit from '../../components/Rest/Covid/CovidCockpit';
 import CovidHeader from '../../components/Rest/Covid/CovidHeader';
 import BasicAuxWrapper from '../../hoc/BasicAuxWrapper';
+import CovidOption from '../../components/Rest/Covid/CovidOption';
+
 
 
 const Covid = props =>{
@@ -19,24 +21,88 @@ const Covid = props =>{
         isShowRest : true
     });
 
+    const [selectedValue, setSelectedValue] = useState({
+        selectedValue : "1"
+    });
+
+    const onChangeCovidOption = (e) =>{
+        //let covidOptionObj = document.getElementById('covidOptionId');
+        console.log('e.target.value > ' + e.target.value);
+
+        setSelectedValue({
+            selectedValue : e.target.value
+        })
+    }
+
+    const [summaryState, setSummaryState] = useState({
+        posts : {}
+    });
+
+    const handlerCovidOption = () =>{
+        console.log('handlerCovidOption : ' + selectedValue.selectedValue );
+        if(selectedValue.selectedValue==="1"){
+            axios.get("https://covid19.th-stat.com/api/open/timeline").then(response => {
+                //console.log(response);
+
+                    setCovidState({
+                        posts : response.data.Data
+                    })
+                }).catch(
+                    error => setErrorCovidState({
+                    errorPosts : true
+                }));
+        }else if(selectedValue.selectedValue==="2"){
+            axios.get("https://covid19.th-stat.com/api/open/cases/sum").then(response => {
+                //console.log(response);
+        
+                    setSummaryState({
+                        posts : response.data.Province
+                    })
+                   
+                    
+                    
+                }).catch(
+                    error => setErrorCovidState({
+                    errorPosts : true
+                }));
+        }else if(selectedValue.selectedValue==="3"){
+            axios.get("https://covid19.th-stat.com/api/open/cases/sum").then(response => {
+                //console.log(response);
+        
+                    setSummaryState({
+                        posts : response.data.Nation
+                    })
+                   
+                    
+                    
+                }).catch(
+                    error => setErrorCovidState({
+                    errorPosts : true
+                }));
+        }
+    }
+
     useEffect(() => {
-        console.log('[Covid.js] 1nd useEffect');
-        axios.get("https://covid19.th-stat.com/api/open/timeline").then(response => {
-            console.log(response);
-    
-                setCovidState({
-                    posts : response.data.Data
-                })
-            }).catch(
-                error => setErrorCovidState({
-                errorPosts : true
-            }));
-    },[]);
+        console.log('1nd useEffect : selectedValue.selectedValue : ' + selectedValue.selectedValue );
+        handlerCovidOption();
+            
+    },[selectedValue]);
 
     return (
         <BasicAuxWrapper>            
             <CovidHeader/>
-            <CovidCockpit data={covidState} error={errorCovidState}></CovidCockpit>
+            <br/>
+            <CovidOption changed={onChangeCovidOption} selected={selectedValue.selectedValue}/>
+            <br/><br/>
+            {selectedValue.selectedValue === "1" &&
+                <CovidCockpit data={covidState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
+            }
+            {selectedValue.selectedValue === "2" &&
+                <CovidCockpit data={summaryState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
+            }
+            {selectedValue.selectedValue === "3" &&
+                <CovidCockpit data={summaryState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
+            }
         </BasicAuxWrapper>
     );
 }

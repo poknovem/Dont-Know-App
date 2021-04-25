@@ -1,5 +1,5 @@
 const basicAuxuxWrapper = props => {
-    console.log('props.children : ' + props.children);
+    //console.log('props.children : ' + props.children);
     return props.children;
 }
 
