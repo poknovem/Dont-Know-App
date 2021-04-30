@@ -6,11 +6,11 @@ const covidResultsNations = (props) => Object.keys(props.data).map((key, i) => {
     //console.log('keys value : ' + key );
     //console.log('[covidResultsNations.js]');
     return (
-        <CovidResultProvince
+        <CovidResultNation
             key = {key}
             country = {key}            
             amount = {props.data[key]}>
-        </CovidResultProvince>
+        </CovidResultNation>
     );
 }); 
     

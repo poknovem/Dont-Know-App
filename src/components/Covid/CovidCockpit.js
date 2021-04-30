@@ -6,6 +6,7 @@ import CovidHeaderProvince from './CovidHeaderProvince.js';
 import CovidResultsProvinces from './CovidResultsProvinces.js';
 import CovidHeaderNations from './CovidHeaderNations.js';
 import * as Constants from '../../constants/Constants.js';
+import CovidResultsNations from './CovidResultsNations.js';
 
 const covidCockpit = (props) => {
     console.log('[covidCockpit.js]');
@@ -20,7 +21,7 @@ const covidCockpit = (props) => {
         postsKeeper = <CovidResultsProvinces data = {props.data.posts} selected={props.selected}/>
         headerKeeper = <CovidHeaderProvince/>
     }else if(props.selected === Constants.COVID_NATIONS_OPTION){
-        postsKeeper = <CovidResultsProvinces data = {props.data.posts} selected={props.selected}/>
+        postsKeeper = <CovidResultsNations data = {props.data.posts} selected={props.selected}/>
         headerKeeper = <CovidHeaderNations/>
     } 
 
