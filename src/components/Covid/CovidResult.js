@@ -1,7 +1,7 @@
 import React from 'react';
 
 const covidResult = ( props ) => {
-    console.log('[covidResult.js]');
+    //console.log('[covidResult.js]');
     return (
         <tr>
             <td>{props.Date}</td>

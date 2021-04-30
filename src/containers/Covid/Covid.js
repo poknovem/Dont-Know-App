@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import CovidCockpit from '../../components/Rest/Covid/CovidCockpit';
-import CovidHeader from '../../components/Rest/Covid/CovidHeader';
+import CovidCockpit from '../../components/Covid/CovidCockpit';
+import CovidHeader from '../../components/Covid/CovidHeader';
 import BasicAuxWrapper from '../../hoc/BasicAuxWrapper';
-import CovidOption from '../../components/Rest/Covid/CovidOption';
+import CovidOption from '../../components/Covid/CovidOption';
+import * as Constants from '../../constants/Constants.js';
 
 
 
 const Covid = props =>{
+    console.log('[Covid.js]');
     const [covidState, setCovidState] = useState({
         posts : []
     });
@@ -40,8 +42,8 @@ const Covid = props =>{
 
     const handlerCovidOption = () =>{
         console.log('handlerCovidOption : ' + selectedValue.selectedValue );
-        if(selectedValue.selectedValue==="1"){
-            axios.get("https://covid19.th-stat.com/api/open/timeline").then(response => {
+        if(selectedValue.selectedValue===Constants.COVID_TIMELINE_OPTION){
+            axios.get(Constants.COVID_TIMELINE_URL).then(response => {
                 //console.log(response);
 
                     setCovidState({
@@ -51,29 +53,25 @@ const Covid = props =>{
                     error => setErrorCovidState({
                     errorPosts : true
                 }));
-        }else if(selectedValue.selectedValue==="2"){
-            axios.get("https://covid19.th-stat.com/api/open/cases/sum").then(response => {
+        }else if(selectedValue.selectedValue===Constants.COVID_PROVINCE_OPTION){
+            axios.get(Constants.COVID_SUMMARY_URL).then(response => {
                 //console.log(response);
         
                     setSummaryState({
                         posts : response.data.Province
                     })
-                   
-                    
                     
                 }).catch(
                     error => setErrorCovidState({
                     errorPosts : true
                 }));
-        }else if(selectedValue.selectedValue==="3"){
-            axios.get("https://covid19.th-stat.com/api/open/cases/sum").then(response => {
+        }else if(selectedValue.selectedValue===Constants.COVID_NATIONS_OPTION){
+            axios.get(Constants.COVID_SUMMARY_URL).then(response => {
                 //console.log(response);
         
                     setSummaryState({
                         posts : response.data.Nation
                     })
-                   
-                    
                     
                 }).catch(
                     error => setErrorCovidState({
@@ -88,21 +86,22 @@ const Covid = props =>{
             
     },[selectedValue]);
 
+    let cockpitKeeper = null;
+    if(selectedValue.selectedValue === Constants.COVID_TIMELINE_OPTION){
+        cockpitKeeper = <CovidCockpit data={covidState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
+    }else if(selectedValue.selectedValue === Constants.COVID_PROVINCE_OPTION){
+        cockpitKeeper = <CovidCockpit data={summaryState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
+    }else if(selectedValue.selectedValue === Constants.COVID_NATIONS_OPTION){
+        cockpitKeeper = <CovidCockpit data={summaryState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
+    }
+
     return (
         <BasicAuxWrapper>            
             <CovidHeader/>
             <br/>
             <CovidOption changed={onChangeCovidOption} selected={selectedValue.selectedValue}/>
             <br/><br/>
-            {selectedValue.selectedValue === "1" &&
-                <CovidCockpit data={covidState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
-            }
-            {selectedValue.selectedValue === "2" &&
-                <CovidCockpit data={summaryState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
-            }
-            {selectedValue.selectedValue === "3" &&
-                <CovidCockpit data={summaryState} error={errorCovidState} selected={selectedValue.selectedValue}></CovidCockpit>
-            }
+            {cockpitKeeper}
         </BasicAuxWrapper>
     );
 }

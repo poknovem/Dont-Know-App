@@ -1,5 +1,5 @@
 import React from 'react';
-import BasicAuxWrapper from '../../../hoc/BasicAuxWrapper';
+import BasicAuxWrapper from '../../hoc/BasicAuxWrapper';
 
 const covidHeaderTimeline = ( props ) => {
     console.log('[covidHeaderTimeline.js]');

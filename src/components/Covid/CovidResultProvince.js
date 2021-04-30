@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CovidResultProvince = ( props ) => {
-    console.log('[CovidResultProvince.js]');
+    //console.log('[CovidResultProvince.js]');
     return (
         <tr>
             <td>{props.province}</td>
