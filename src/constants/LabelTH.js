@@ -10,3 +10,6 @@ export const DEATHS="เสียชีวิตสะสม";
 export const PROVINCE="จังหวัด";
 export const NATION="เชื้อชาติที่อาศัยในประเทศไทย";
 export const REFERENCES="ข้อมูลจากกรมควบคุมโรค";
+export const TIMELINE_OPTION="ไทม์ไลน์";
+export const PROVINCE_OPTION="จังหวัด";
+export const NATION_OPTION="เชื้อชาติ";

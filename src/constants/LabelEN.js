@@ -10,3 +10,6 @@ export const DEATHS="Deaths";
 export const PROVINCE="Province";
 export const NATION="Nation";
 export const REFERENCES="Information from Department of Disease Control";
+export const TIMELINE_OPTION="Timeline";
+export const PROVINCE_OPTION="Province";
+export const NATION_OPTION="Nation";
