@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BasicAuxWrapper from '../../hoc/BasicAuxWrapper';
+import Context from '../../context/Context';
 
-const covidHeaderNations = ( props ) => {
+const CovidHeaderNations = ( props ) => {
     console.log('[covidHeaderNations.js]');
+    const context = useContext(Context);
     return (
         <BasicAuxWrapper>
-            <th>เชื้อชาติที่อาศัยในประเทศไทย</th>
-            <th>ติดโควิดทั้งหมด</th>
+            <th>{context.label.NATION}</th>
+            <th>{context.label.COMFIRMED}</th>
         </BasicAuxWrapper>
     )
 };
 
-export default covidHeaderNations;
+export default CovidHeaderNations;

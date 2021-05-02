@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import * as Constants from '../../constants/Constants.js';
 

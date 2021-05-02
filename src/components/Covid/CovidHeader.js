@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BasicAuxWrapper from '../../hoc/BasicAuxWrapper';
+import Context from '../../context/Context';
 
-const covidHeader = ( props ) => {
+const CovidHeader = ( props ) => {
     console.log('[covidHeader.js]');
+    const context = useContext(Context);
     return (
         <BasicAuxWrapper>
             <h1>Thailand Covid Report</h1>
-            <cite title="ข้อมูลจากกรมควบคุมโรค">ข้อมูลจากกรมควบคุมโรค</cite>
+            <cite title={context.label.REFERENCES}>{context.label.REFERENCES}</cite>
             <br/>
         </BasicAuxWrapper>
     )
 };
 
-export default covidHeader;
+export default CovidHeader;

@@ -19,12 +19,8 @@ const Covid = props =>{
         errorPosts : false
     });
 
-    const [isShowCovid, setIsShowCovid] = useState({
-        isShowRest : true
-    });
-
     const [selectedValue, setSelectedValue] = useState({
-        selectedValue : "1"
+        selectedValue : Constants.COVID_TIMELINE_OPTION
     });
 
     const onChangeCovidOption = (e) =>{
@@ -81,7 +77,7 @@ const Covid = props =>{
     }
 
     useEffect(() => {
-        console.log('1nd useEffect : selectedValue.selectedValue : ' + selectedValue.selectedValue );
+        console.log('1nd Covid.js useEffect : selectedValue.selectedValue : ' + selectedValue.selectedValue );
         handlerCovidOption();
             
     },[selectedValue]);
