@@ -10,11 +10,11 @@ const CovidHeaderTimeline = ( props ) => {
             <th>{context.label.DATE}</th>
             <th>{context.label.NEW_CONFIRMED}</th>
             <th>{context.label.NEW_RECOVERED}</th>
-            <th>{context.label.NEW_HOSPITALIZED}</th>
+            {/* <th>{context.label.NEW_HOSPITALIZED}</th> */}
             <th>{context.label.NEW_DEATHS}</th>
             <th>{context.label.COMFIRMED}</th>
             <th>{context.label.RECOVERED}</th>
-            <th>{context.label.HOSPITALIZED}</th>
+            {/* <th>{context.label.HOSPITALIZED}</th> */}
             <th>{context.label.DEATHS}</th>
         </BasicAuxWrapper>
     )

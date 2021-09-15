@@ -43,7 +43,7 @@ const Covid = props =>{
                 //console.log(response);
 
                     setCovidState({
-                        posts : response.data.Data
+                        posts : response.data
                     })
                 }).catch(
                     error => setErrorCovidState({
@@ -54,7 +54,7 @@ const Covid = props =>{
                 //console.log(response);
         
                     setSummaryState({
-                        posts : response.data.Province
+                        posts : response.data
                     })
                     
                 }).catch(
@@ -66,7 +66,7 @@ const Covid = props =>{
                 //console.log(response);
         
                     setSummaryState({
-                        posts : response.data.Nation
+                        posts : response.data
                     })
                     
                 }).catch(

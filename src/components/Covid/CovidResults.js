@@ -6,15 +6,15 @@ const covidResults = (props) => props.data.slice(0).reverse().map((restResult, i
     return (
         <CovidResult
             key = {index}
-            Date = {restResult.Date}            
-            NewConfirmed = {restResult.NewConfirmed}
-            NewRecovered = {restResult.NewRecovered}
-            NewHospitalized = {restResult.NewHospitalized}
-            NewDeaths = {restResult.NewDeaths}
-            Confirmed = {restResult.Confirmed}
-            Recovered = {restResult.Recovered}
-            Hospitalized = {restResult.Hospitalized}
-            Deaths = {restResult.Deaths}>
+            Date = {restResult.txn_date}            
+            NewConfirmed = {restResult.new_case}
+            NewRecovered = {restResult.new_recovered}
+            //NewHospitalized = {restResult.NewHospitalized}
+            NewDeaths = {restResult.new_death}
+            Confirmed = {restResult.total_case}
+            Recovered = {restResult.total_recovered}
+            //Hospitalized = {restResult.Hospitalized}
+            Deaths = {restResult.total_death}>
         </CovidResult>
     );
 });
